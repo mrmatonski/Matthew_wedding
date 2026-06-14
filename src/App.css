@@ -303,6 +303,38 @@ html {
   box-shadow: 0 12px 26px rgba(78, 59, 45, 0.14);
 }
 
+.photo-download {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 253, 248, 0.72);
+  border-radius: 999px;
+  padding: 0 1rem;
+  background: rgba(45, 41, 37, 0.72);
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 26px rgba(45, 41, 37, 0.2);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.photo-download:hover,
+.photo-download:focus {
+  background: rgba(101, 113, 77, 0.9);
+  transform: translateY(-2px);
+}
+
 .gallery-card__caption span,
 .details span {
   color: var(--moss);
@@ -386,6 +418,17 @@ html {
 }
 
 .rehearsal-card:hover .rehearsal-card__overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo-download--rehearsal {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.rehearsal-card:hover .photo-download--rehearsal,
+.rehearsal-card:focus-within .photo-download--rehearsal {
   opacity: 1;
   transform: translateY(0);
 }
@@ -608,6 +651,12 @@ html {
   }
 
   .rehearsal-card__overlay {
+    opacity: 1;
+    transform: none;
+  }
+
+  .photo-download,
+  .photo-download--rehearsal {
     opacity: 1;
     transform: none;
   }

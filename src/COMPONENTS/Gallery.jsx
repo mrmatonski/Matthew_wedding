@@ -108,6 +108,7 @@ const rehearsalPhotos = rehearsalImages.map((src, index) => ({
     title: `Rehearsal Moment ${index + 1}`,
     category: index < 6 ? 'Featured rehearsal' : 'Rehearsal',
     alt: `Wedding rehearsal moment ${index + 1}`,
+    filename: `matthew-wedding-rehearsal-${String(index + 1).padStart(2, '0')}.jpeg`,
 }));
 
 const galleryPhotos = [
@@ -116,36 +117,42 @@ const galleryPhotos = [
         title: 'Just Married',
         category: 'Featured',
         alt: 'Wedding couple celebrating together',
+        filename: 'matthew-wedding-just-married.jpeg',
     },
     {
         src: rehearsalPhotos[0]?.src,
         title: 'Rehearsal Smiles',
         category: 'Rehearsal',
         alt: 'Wedding rehearsal smiles',
+        filename: 'matthew-wedding-rehearsal-smiles.jpeg',
     },
     {
         src: rehearsalPhotos[1]?.src,
         title: 'Family Warmup',
         category: 'Rehearsal',
         alt: 'Family gathering at wedding rehearsal',
+        filename: 'matthew-wedding-family-warmup.jpeg',
     },
     {
         src: rehearsalPhotos[2]?.src,
         title: 'Before the Ceremony',
         category: 'Rehearsal',
         alt: 'Wedding rehearsal before the ceremony',
+        filename: 'matthew-wedding-before-ceremony.jpeg',
     },
     {
         src: rehearsalPhotos[3]?.src,
         title: 'Spring Details',
         category: 'Rehearsal',
         alt: 'Spring wedding rehearsal detail',
+        filename: 'matthew-wedding-spring-details.jpeg',
     },
     {
         src: rehearsalPhotos[4]?.src,
         title: 'Everyone Together',
         category: 'Rehearsal',
         alt: 'Wedding rehearsal group moment',
+        filename: 'matthew-wedding-everyone-together.jpeg',
     },
 ];
 
@@ -164,6 +171,14 @@ function Gallery() {
                 {galleryPhotos.filter((photo) => photo.src).map((photo) => (
                     <article className={`gallery-card${photo.src ? '' : ' gallery-card--empty'}`} key={photo.title}>
                         <img src={photo.src} alt={photo.alt} />
+                        <a
+                            className="photo-download"
+                            href={photo.src}
+                            download={photo.filename}
+                            aria-label={`Download ${photo.title}`}
+                        >
+                            Download
+                        </a>
                         <div className="gallery-card__caption">
                             <span>{photo.category}</span>
                             <h3>{photo.title}</h3>
@@ -184,6 +199,14 @@ function Gallery() {
                     {rehearsalPhotos.map((photo, index) => (
                         <article className="rehearsal-card" key={photo.title}>
                             <img src={photo.src} alt={photo.alt} loading={index > 8 ? 'lazy' : 'eager'} />
+                            <a
+                                className="photo-download photo-download--rehearsal"
+                                href={photo.src}
+                                download={photo.filename}
+                                aria-label={`Download ${photo.title}`}
+                            >
+                                Download
+                            </a>
                             <div className="rehearsal-card__overlay">
                                 <span>{photo.category}</span>
                                 <h3>{photo.title}</h3>
